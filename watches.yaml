@@ -1,5 +1,6 @@
----
-- group: vmware.com
-  version: v1alpha1
+# Use the 'create api' subcommand to add watches to this file.
+- group: edgex.deploy
+  version: v1
   kind: EdgeX
   chart: helm-charts/EdgeX
+# +kubebuilder:scaffold:watch

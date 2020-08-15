@@ -1,0 +1,24 @@
+# permissions for end users to edit edgices.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: edgex-editor-role
+rules:
+- apiGroups:
+  - edgex.deploy
+  resources:
+  - edgices
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - edgex.deploy
+  resources:
+  - edgices/status
+  verbs:
+  - get

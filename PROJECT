@@ -1,0 +1,8 @@
+domain: deploy
+layout: helm.sdk.operatorframework.io/v1
+projectName: operator-edgex
+resources:
+- group: edgex
+  kind: EdgeX
+  version: v1
+version: 3-alpha

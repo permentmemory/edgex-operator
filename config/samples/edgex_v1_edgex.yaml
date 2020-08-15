@@ -1,10 +1,9 @@
-apiVersion: vmware.com/v1alpha1
+apiVersion: edgex.deploy/v1
 kind: EdgeX
 metadata:
-  name: example-edgex
+  name: edgex-sample
 spec:
   # Default values copied from <project_dir>/helm-charts/EdgeX/values.yaml
-  
   edgex:
     app:
       appservice:
@@ -58,8 +57,8 @@ spec:
           tag: 1.2.1
       redis:
         pullPolicy: IfNotPresent
-        repository: quay.io/smile/redis
-        tag: 4.0.6r2
+        repository: redis
+        tag: 5.0.8-alpine
       support:
         notifications:
           pullPolicy: IfNotPresent
@@ -92,7 +91,7 @@ spec:
       device:
         rest: 1
         virtual: 1
-      redis: 3
+      redis: 1
       support:
         notifications: 1
         rulesengine: 1
@@ -160,18 +159,13 @@ spec:
             cpu: 0.5
             memory: 256Mi
       redis:
-        sentinel:
-          limits:
-            memory: 200Mi
-          requests:
-            cpu: 100m
-            memory: 200Mi
-        server:
-          limits:
-            memory: 700Mi
-          requests:
-            cpu: 100m
-            memory: 200Mi
+        enforceLimits: false
+        limits:
+          cpu: 1
+          memory: 512Mi
+        requests:
+          cpu: 0.5
+          memory: 256Mi
       support:
         notifications:
           enforceLimits: false
@@ -233,9 +227,5 @@ spec:
       system: 30090
       ui: 30400
     type: NodePort
-  rbac:
-    create: true
-  serviceAccount:
-    create: true
-    name: null
+  
   
